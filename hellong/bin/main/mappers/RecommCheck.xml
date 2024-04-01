@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.hellong.RecommCheckMapper">
+<!-- 추천 여부 확인 쿼리 -->
+	<select id="dyCheckRecomm" parameterType="map"
+		resultType="RecommCheck">
+		SELECT * FROM recomm_check
+		WHERE b_number = #{b_number} AND m_number = #{m_number}
+	</select>
+
+	<insert id="dyInsertRecomm" parameterType="RecommCheck">
+  INSERT INTO recomm_check (b_number, m_number, rc_isrecomm)
+  		VALUES (#{b_number}, #{m_number}, #{rc_isrecomm})
+	</insert>
+
+<!-- ============================ 재준 mappers 시작 ============================ -->
+<!-- 추천 여부 확인 쿼리 -->
+	<select id="jjCheckRecomm" parameterType="map"
+		resultType="RecommCheck">
+		SELECT * FROM recomm_check
+		WHERE b_number = #{b_number} AND m_number = #{m_number}
+	</select>
+
+	<insert id="jjInsertRecomm" parameterType="RecommCheck">
+		INSERT INTO recomm_check (b_number, m_number, rc_isrecomm)
+		VALUES (#{b_number}, #{m_number}, #{rc_isrecomm})
+	</insert>
+	
+	<!-- board에서 글 삭제시 RecommCheck에 있는 b_number도 같이 삭제 쿼리 -->
+	<delete id="delrecommBoard" parameterType="int">
+		DELETE FROM Recomm_Check 
+		WHERE b_number = #{b_number}
+	</delete>
+
+<!-- ============================ 재준 mappers 끝 ============================ -->
+
+	<delete id="dyDeleteRecomm" parameterType="int">
+		delete from recomm_check
+		where b_number = #{b_number}
+	</delete>
+
+</mapper>
