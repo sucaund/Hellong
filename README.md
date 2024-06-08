@@ -25,3 +25,28 @@
 
 ![hellong0608](https://github.com/sucaund/Hellong/assets/139835601/84f99c6b-b43d-4570-9133-0f5fabf74ab3)
 
+# 트러블슈팅
+
+### ㅇㅇㅇ
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/6243e06e-9f36-41a2-88a0-71adfdc432d7/ef2f4c86-451d-4b14-81c0-3cb8da5de24f/Untitled.png)
+
+ajax를 통해 회원정보를 가져오는과정에서 반환값이 null로서 전달되지않아 오류가 생겼다.
+
+이유는?
+반환값이 **`null`**인 상황은 **`session.selectOne("getGym", g_id);`** 호출이 예상대로 작동하지 않았음
+
+```java
+@Override
+	public Gym getGym(int g_id) {
+		System.out.println("QBoarddaoImpl getGym g_id"+"   "+g_id);
+		Gym gym = null;
+		try {
+			session.selectOne("getGym", g_id);
+		} catch (Exception e) {
+			System.out.println("QBoarddaoImpl getGym e.getMessage()->" + e.getMessage());
+		}
+		System.out.println("QBoarddaoImpl sucess! gym"+ " "+ gym);
+		return gym;
+	}
+```
+
