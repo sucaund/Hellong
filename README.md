@@ -140,4 +140,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/upload/**").addResourceLocations("file:///C:/Users/admin/git/j_team_projects/hellong/uploads/");
     }
 ```
+이렇게 코드 매핑이 완벽하게 되었으나 해당 @configuration 클래스의 위치가 외부 폴더 엉뚱한 곳에 있어 @configuration 가 실행되지 못한것이었다!
+![Untitled (2)](https://github.com/sucaund/Hellong/assets/139835601/e9d49f71-a4f5-44fe-8ff8-85b81fe788d3)
+사진과같이 올바른위치에 설정하니 작동이된다!
 
