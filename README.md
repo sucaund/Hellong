@@ -52,3 +52,20 @@ ajax를 통해 회원정보를 가져오는과정에서 반환값이 null로서 
 	}
 ```
 
+
+해결: 창피하지만 기초적인 실수로서 반환값을 설정하지 않았음...
+```java
+@Override
+	public Gym getGym(int g_id) {
+		System.out.println("QBoarddaoImpl getGym g_id"+"   "+g_id);
+		Gym gym = null;
+		try {
+			gym= session.selectOne("getGym", g_id);
+		} catch (Exception e) {
+			System.out.println("QBoarddaoImpl getGym e.getMessage()->" + e.getMessage());
+		}
+		System.out.println("QBoarddaoImpl sucess! gym"+ " "+ gym);
+		return gym;
+	}
+```
+
