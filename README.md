@@ -28,7 +28,7 @@
 # 트러블슈팅
 
 ### ㅇㅇㅇ
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/6243e06e-9f36-41a2-88a0-71adfdc432d7/ef2f4c86-451d-4b14-81c0-3cb8da5de24f/Untitled.png)
+![Uploading Untitled (1).png…]()
 
 ajax를 통해 회원정보를 가져오는과정에서 반환값이 null로서 전달되지않아 오류가 생겼다.
 
