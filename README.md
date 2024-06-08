@@ -20,3 +20,8 @@
 
 ![Untitled](https://github.com/sucaund/Hellong/assets/139835601/5003cead-ca13-465c-baac-e37ef7bcdc5b)
 
+
+# 작업 구성도
+
+![hellong0608](https://github.com/sucaund/Hellong/assets/139835601/84f99c6b-b43d-4570-9133-0f5fabf74ab3)
+
