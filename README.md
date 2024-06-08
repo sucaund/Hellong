@@ -71,11 +71,11 @@ ajax를 통해 회원정보를 가져오는과정에서 반환값이 null로서 
 
 
 
-### ajax로 이미지 경로 가져오기 오
+### ajax로 이미지 경로 가져오기 오류(경로설정의 개념학습)
 
 문제= 데이터의 이름을 가져온후 해당 데이터의 경로+데이터 이름을 통한 src=”url”호출을 시도햇으나  not found 오류가나왔다.
 
-```java
+```jsp
 $('.GymEdit-btn').on('click',function() {
 				var memberId = $(this).data('memberid');
 				// AJAX를 사용하여 서버에 체육관 정보를 요청합니다.
@@ -118,5 +118,26 @@ $('.GymEdit-btn').on('click',function() {
 				});
 			});
 });
+```
+상단 코드의 매핑과  url링크를  설정하기위해 @configuration 클래스를 추가한다.
+
+
+```java
+package com.oracle.hellong.configuration;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    private String resourcePath = "file:///C:/Users/admin/git/j_team_projects/hellong/uploads/";// 실제 파일 저장 경로 
+    private String uploadPath = "/upload/**"; // view에서 사용할 경로
+
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:///C:/Users/admin/git/j_team_projects/hellong/uploads/");
+    }
 ```
 
