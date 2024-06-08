@@ -76,53 +76,47 @@ ajax를 통해 회원정보를 가져오는과정에서 반환값이 null로서 
 문제= 데이터의 이름을 가져온후 해당 데이터의 경로+데이터 이름을 통한 src=”url”호출을 시도햇으나  not found 오류가나왔다.
 
 ```java
-$('.GymEdit-btn').on('click',
-							function() {
-								
-								var memberId = $(this).data('memberid');
-								// AJAX를 사용하여 서버에 체육관 정보를 요청합니다.
-								$.ajax({
-									url : 'getGymDetails', // 서버의 URL을 지정해야 합니다.
-									type : 'GET',
-									data : {
-										'id' : memberId
-									}, // 서버로 보낼 데이터
-									dataType : 'json', // 응답 받을 데이터의 타입
-									success : function(data) {
-										console.log(data);
-										var imageUrl = '/upload/' + data.g_document;
-//외부경로를 가져올때 WebConfig에서 설정한 웹 url관련 @configuration 설정에서
-서버내 파일 경로와 해당 경로를 호출하는 매핑/upload/를 설정한다...
-
-										// 성공 시 모달의 필드에 데이터를 채웁니다.
-										// 모달의 각 입력 필드에 ID를 설정하고 해당 ID를 사용하여 값을 설정합니다.
-										$('#Gym_Content input[name="m_number"]').val(data.m_number);//파트너 번호
-										$('#Gym_Content input[name="g_name"]').val(data.g_name);//상호명
-										$('#Gym_Content input[name="g_address"]').val(data.g_address);//주소
-										$('#Gym_Content input[name="g_tel"]').val(data.g_tel);//전화번호
-										$('#Gym_Content input[name="g_companynumber"]').val(data.g_companynumber);//사업자 등록번호
-										$('#Gym_Content img[name="g_document"]').attr('src', imageUrl);//사업자 등록증
-
-										
-										
-										// 여기에 다른 필드에 대한 데이터 설정을 추가합니다.
-										 if(data.common_mcd === 10) { // 대기
-										        $('#Gym_Content input[name="GymOpen_mcd"][value="10"]').prop('checked', true);
-										    } else if(data.common_mcd === 20) { // 승인
-										        $('#Gym_Content input[name="GymOpen_mcd"][value="20"]').prop('checked', true);
-										    } else if(data.common_mcd === 30) { // 노출
-										        $('#Gym_Content input[name="GymOpen_mcd"][value="30"]').prop('checked', true);
-										    }
-										// 모달을 표시합니다.
-										$('#Gym_Content').modal('show');
-									},
-									error : function(xhr, status, error) {
-										// 오류 처리
-										console.error("AJAX Error: " + status
-												+ error);
-									}
-								});
-							});
+$('.GymEdit-btn').on('click',function() {
+				var memberId = $(this).data('memberid');
+				// AJAX를 사용하여 서버에 체육관 정보를 요청합니다.
+				$.ajax({
+					url : 'getGymDetails', // 서버의 URL을 지정해야 합니다.
+					type : 'GET',
+					data : {
+						'id' : memberId
+					}, // 서버로 보낼 데이터
+					dataType : 'json', // 응답 받을 데이터의 타입
+					success : function(data) {
+						console.log(data);
+						var imageUrl = '/upload/' + data.g_document;
+                        //외부경로를 가져올때 WebConfig에서 설정한 웹 url관련 @configuration 설정에서
+                       서버내 파일 경로와 해당 경로를 호출하는 매핑/upload/를 설정한다...
+						// 성공 시 모달의 필드에 데이터를 채웁니다.
+						// 모달의 각 입력 필드에 ID를 설정하고 해당 ID를 사용하여 값을 설정합니다.
+						$('#Gym_Content input[name="m_number"]').val(data.m_number);//파트너 번호
+						$('#Gym_Content input[name="g_name"]').val(data.g_name);//상호명
+						$('#Gym_Content input[name="g_address"]').val(data.g_address);//주소
+						$('#Gym_Content input[name="g_tel"]').val(data.g_tel);//전화번호
+						$('#Gym_Content input[name="g_companynumber"]').val(data.g_companynumber);//사업자 등록번호
+						$('#Gym_Content img[name="g_document"]').attr('src', imageUrl);//사업자 등록증
+						// 여기에 다른 필드에 대한 데이터 설정을 추가합니다.
+						 if(data.common_mcd === 10) { // 대기
+						        $('#Gym_Content input[name="GymOpen_mcd"][value="10"]').prop('checked', true);
+						    } else if(data.common_mcd === 20) { // 승인
+						        $('#Gym_Content input[name="GymOpen_mcd"][value="20"]').prop('checked', true);
+						    } else if(data.common_mcd === 30) { // 노출
+						        $('#Gym_Content input[name="GymOpen_mcd"][value="30"]').prop('checked', true);
+						    }
+						// 모달을 표시합니다.
+						$('#Gym_Content').modal('show');
+					},
+					error : function(xhr, status, error) {
+						// 오류 처리
+						console.error("AJAX Error: " + status
+								+ error);
+					}
+				});
 			});
+});
 ```
 
